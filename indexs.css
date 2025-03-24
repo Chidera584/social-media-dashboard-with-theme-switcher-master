@@ -1,3 +1,4 @@
+
 body{
     display: flex;
    align-items: center;
@@ -5,19 +6,51 @@ body{
    align-items: center;
    height: 100%;
    margin: 0;
-   background-color:hsl(230, 17%, 14%);
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
+body.dark-mode {
+    background-color: #1e2139;
+    color: white; 
+}
+
+
+body.light-mode {
+    background-color: #f5f7ff;
+    color: black; 
+}
+
+
+
+.dark-mode .card, .dark-mode .overview-card {
+    background-color: #252b43;
+    color: white;  
+}
+
+.light-mode .card, .light-mode .overview-card {
+    background-color: white;
+    color: #1e2139;  
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+
+.dark-mode .toggle-container {
+    color: white;
+}
+
+.light-mode .toggle-container {
+    color: #1e2139;
+}
+
+
 .Dashboard{
-   background-color: hsl(232, 19%, 15%);
-   color: white;
    height: 130px;
    display: flex;
    justify-content: space-between;
+   align-items: center;
    padding-top: 50px;
    padding-right: 250px;
-   padding-left: 130px;
-   
+   padding-left: 130px;  
 }
 img{
     object-fit: cover;
@@ -27,11 +60,48 @@ img{
 position: relative;
  font-size: 35px;
  font-weight: bold;
- 
 }
-.mode{
-    
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
 }
+
+.toggle {
+    width: 50px;
+    height: 24px;
+    background:  #aeb3cb;;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle:hover {
+    background: linear-gradient(90deg, #378fe6, #3eda82);
+}
+
+.toggle::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+.dark-mode .toggle::after {
+    transform: translateX(26px);
+}
+
+.light-mode .toggle::after {
+    transform: translateX(0);
+}
+
 .total-followers{
  font-size: 14px;
  font-weight: 100;
@@ -45,7 +115,7 @@ color: hsl(228, 34%, 66%)
     margin-right: 120px;
     margin-left: 120px;
 }
-.facebook, .twitter, .instargram, .youtube{
+.card {
     width: 230px;
     height: 200px;
     display: flex;
@@ -68,6 +138,13 @@ color: hsl(228, 34%, 66%)
 .youtube{
     border-top: 4px solid #c4032a; 
 }
+ 
+.card:hover {
+    filter: brightness(1.1);
+}
+
+
+
 .username{
     font-size: 15px;
     margin-top: 35px;
@@ -79,7 +156,7 @@ color: hsl(228, 34%, 66%)
 .number{
     margin-top: 15px;
     font-size: 55px;
-    color: white;
+ 
     font-weight: bold;
     margin-bottom: 0px;
 }
@@ -87,6 +164,7 @@ color: hsl(228, 34%, 66%)
     margin-top: 0px;
    color: hsl(228, 34%, 66%) ;
    font-size: 13px;
+   letter-spacing: 4px;
 }
 .green-update, .red-update{
     margin-top: 20px;
@@ -104,7 +182,6 @@ color: hsl(228, 34%, 66%)
 .overview{
     font-size: 20px;
     font-weight: bold;
-    color: white;
     margin-left: 130px;
     margin-top:40px ;
 }
@@ -117,15 +194,17 @@ color: hsl(228, 34%, 66%)
     margin-left: 120px;
 }
 
-.facebook-pageViews, .facebook-likes,
- .instargram-likes, .instargram-views, 
- .retweets,.tweet-likes, .youtube-likes, 
- .youtube-views{
+.overview-card{
     background-color:  hsl(228, 28%, 20%) ;
     width: 230px;
     height: 120px;
     padding: 20px;
  }
+
+ .overview-card:hover {
+    filter: brightness(1.1);
+}
+ 
 
  .details{
     margin-top: 30px;
@@ -140,9 +219,17 @@ color: hsl(228, 34%, 66%)
     display: flex;
    text-align: center;
     justify-content: space-between;
-    color: white;
     font-size: 32px;
     margin-right: 18px;
     margin-left:18px ;
- 
+    font-weight: bold;
  }
+ .card, .overview-card {
+    /* Other existing card styles */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.card:hover, .overview-card:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+}
